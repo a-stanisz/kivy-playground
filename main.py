@@ -28,6 +28,20 @@ class MyGridLayout(GridLayout):
         self.color = TextInput(multiline=False)
         self.add_widget(self.color)
 
+        self.submit = Button(text="Submit", font_size=32)
+        self.submit.bind(on_press=self.press)
+        self.add_widget(self.submit)
+
+    def press(self, instance):
+        name = self.name.text
+        pizza = self.pizza.text
+        color = self.color.text
+
+        self.add_widget(Label(text=f'Hello {name}, you like {pizza} pizza, and your favorite color is {color}!'))
+        self.name.text = ""
+        self.pizza.text = ""
+        self.color.text = ""
+
 
 class MyApp(App):
     def build(self):
